@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios'; // Import Axios for making requests
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
 import './flightbooking.css'; // Import your CSS file for styling
 import flightImage1 from '../../assets/images/image24.webp'; // Import your flight images
 import flightImage2 from '../../assets/images/image23.avif';
 import flightImage3 from '../../assets/images/image25.webp';
 import flightImage4 from '../../assets/images/imageaka.jpg';
+import flightImage5 from '../../assets/images/flights5.jpg'; // Corrected flight image extension
+import flightImage6 from '../../assets/images/flights6.jpg'; // Corrected flight image extension
 import PaymentPopup from '../../Payment/PaymentPopup'; // Import the PaymentPopup component
 
 const FlightBooking = () => {
   const [selectedFlight, setSelectedFlight] = useState(null);
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
+  const { userEmail } = useContext(AuthContext); // Get userEmail from AuthContext
 
   const flights = [
     {
@@ -51,6 +57,26 @@ const FlightBooking = () => {
       departure: '2:00 PM',
       arrival: '3:00 PM',
       image: flightImage4,
+    },
+    {
+      id: 5,
+      name: 'Vistara',
+      price: '₹8,000',
+      from: 'Delhi',
+      to: 'Mumbai',
+      departure: '9:00 AM',
+      arrival: '11:00 AM',
+      image: flightImage5,
+    },
+    {
+      id: 6,
+      name: 'SpiceJet',
+      price: '₹4,500',
+      from: 'Chennai',
+      to: 'Hyderabad',
+      departure: '4:00 PM',
+      arrival: '5:30 PM',
+      image: flightImage6,
     }
   ];
 
@@ -73,17 +99,16 @@ const FlightBooking = () => {
       to: selectedFlight.to,
       departure: selectedFlight.departure,
       arrival: selectedFlight.arrival,
-      userEmail: 'user@example.com', // Replace with the actual user email
+      userEmail: userEmail, // Use the dynamic user email from context
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/book-flight', bookingDetails); // Using Axios for the POST request
+      const response = await axios.post('/api/book-flight', bookingDetails); // Using Axios for the POST request
 
       if (response.status === 200) {
         console.log('Flight booking successful:', response.data);
-        alert('Flight booked successfully!');
         setShowPaymentPopup(false); // Close the payment popup after successful booking
-        setSelectedFlight(null); // Clear selected flight after booking
+        navigate('/booking-confirmation', { state: bookingDetails }); // Redirect with booking details
       }
     } catch (error) {
       console.error('Error booking flight:', error);

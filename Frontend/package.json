@@ -2,7 +2,7 @@
   "name": "travel-frontend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config travel/vite.config.js",
     "build": "chmod +x node_modules/.bin/vite && ./node_modules/.bin/vite build --config travel/vite.config.js",
     "preview": "vite preview --host 0.0.0.0 --port 5174"
   },

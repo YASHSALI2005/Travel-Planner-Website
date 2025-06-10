@@ -20,9 +20,12 @@ const Navbar = () => {
         <li><Link to="/about-us">About Us</Link></li>
         {/* <li><Link to="/profile">Profile</Link></li> */}
         {isAuthenticated ? (
-          <li>
-            <button className="auth-logout-button" onClick={logout}>Logout</button>
-          </li>
+          <>
+            <li><Link to="/my-bookings">My Bookings</Link></li>
+            <li>
+              <button className="auth-logout-button" onClick={logout}>Logout</button>
+            </li>
+          </>
         ) : (
           <li><Link to="/login">Login</Link></li>
         )}

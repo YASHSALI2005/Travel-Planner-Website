@@ -24,6 +24,8 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
     width: 300px; /* Fixed width for uniformity */
+    display: flex; /* Add flexbox */
+    flex-direction: column; /* Stack children vertically */
   }
   
   .flight-card img {
@@ -33,6 +35,10 @@
   
   .flight-info {
     text-align: center;
+    flex-grow: 1; /* Allow info section to grow */
+    display: flex; /* Add flexbox to info */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space vertically */
   }
   
   .price {

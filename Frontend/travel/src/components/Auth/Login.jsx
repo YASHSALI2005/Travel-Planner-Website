@@ -12,21 +12,21 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const result = await axios.post(`${import.meta.env.VITE_API_URL}/login`, { email, password });
-    
-    // updated success check
-    if (result.data.message === "success") {
-      login(); // set auth context
-      navigate('/');
-    } else {
-      setMessage(result.data.error || "Unknown response from server");
+    e.preventDefault();
+    try {
+      const result = await axios.post(`/api/login`, { email, password });
+      
+      // updated success check
+      if (result.data.message === "success") {
+        login(email); // Pass the email to the login function
+        navigate('/');
+      } else {
+        setMessage(result.data.error || "Unknown response from server");
+      }
+    } catch (err) {
+      setMessage(err.response?.data?.error || "Error during login");
     }
-  } catch (err) {
-    setMessage(err.response?.data?.error || "Error during login");
-  }
-};
+  };
 
   return (
     <div className="auth-container">

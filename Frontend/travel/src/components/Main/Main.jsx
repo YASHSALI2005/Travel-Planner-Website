@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './main.css'; // Import your external CSS
 import travelVideo from '../../assets/images/travell.mp4'; // Adjust the path if necessary
@@ -6,6 +6,8 @@ import bno from '../../assets/images/redfort1.webp'
 import nwo from '../../assets/images/qutub.jpg'
 import taa from '../../assets/images/taj1.jpeg'
 import ss from '../../assets/images/qr.png'
+import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
+
 const Main = () => {
   // State to store the trip form data
   const [tripData, setTripData] = useState({
@@ -15,6 +17,7 @@ const Main = () => {
   });
 
   const navigate = useNavigate(); // Initialize the navigate function from React Router
+  const { isAuthenticated } = useContext(AuthContext); // Get isAuthenticated from AuthContext
 
   // Handle input change and update the state
   const handleInputChange = (e) => {
@@ -28,6 +31,10 @@ const Main = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
+    if (!isAuthenticated) {
+      navigate('/login'); // Redirect to login if not authenticated
+      return;
+    }
     console.log('Trip data submitted:', tripData); // Log trip data to console for debugging
     // Redirect to the '/plan' page with trip data in the state
     navigate('/plan', { state: tripData });

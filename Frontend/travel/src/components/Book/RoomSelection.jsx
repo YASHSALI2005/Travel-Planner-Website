@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios'; // Import Axios for making requests
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
 import './Booknow.css'; // Import your CSS file for styling
 import roomImage1 from '../../assets/images/n.jpeg'; // Replace with your actual room images
 import roomImage2 from '../../assets/images/s.jpeg';
@@ -12,6 +14,8 @@ import PaymentPopup from '../../Payment/PaymentPopup'; // Correct import path
 const RoomSelection = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
+  const { userEmail } = useContext(AuthContext); // Get userEmail from AuthContext
 
   const rooms = [
     {
@@ -73,16 +77,16 @@ const RoomSelection = () => {
       roomType: selectedRoom.name,
       price: selectedRoom.price,
       facilities: selectedRoom.facilities,
-      userEmail: 'user@example.com', // Replace with the actual user email
+      userEmail: userEmail, // Use the dynamic user email from context
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/bookroom', bookingDetails); // Using Axios for the POST request
+      const response = await axios.post('/api/bookroom', bookingDetails); // Using Axios for the POST request
 
       if (response.status === 200) {
         console.log('Booking successful:', response.data);
-        alert('Room booked successfully!');
         setShowPaymentPopup(false); // Close the payment popup after successful booking
+        navigate('/booking-confirmation', { state: bookingDetails }); // Redirect with booking details
       }
     } catch (error) {
       console.error('Error booking room:', error);

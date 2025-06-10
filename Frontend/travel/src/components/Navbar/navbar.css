@@ -55,10 +55,6 @@
   background-color: #f0f0f0;
 }
 
-
-
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-navbar {
@@ -74,5 +70,4 @@
   .main-navbar-links li {
     margin: 0.5rem 0;
   }
-  
-}
+} 

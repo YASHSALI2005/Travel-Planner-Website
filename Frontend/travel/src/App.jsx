@@ -10,6 +10,8 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import { AuthProvider } from './context/AuthContext'; // Import AuthProvider
 import PaymentPopup from './Payment/PaymentPopup';
+import BookingConfirmation from './components/BookingConfirmation/BookingConfirmation';
+import MyBookings from './components/MyBookings/MyBookings'; // Import the new component
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/payment" element={<PaymentPopup/>}/>
+          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route path="/my-bookings" element={<MyBookings />} /> {/* New route */}
         </Routes>
         <Footer />
       </Router>

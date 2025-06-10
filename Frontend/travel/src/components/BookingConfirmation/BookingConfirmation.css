@@ -1,0 +1,43 @@
+.booking-confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Occupy most of the viewport height */
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.booking-confirmation-container h2 {
+  color: #28a745; /* Green for success */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.booking-confirmation-container p {
+  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.booking-confirmation-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.booking-confirmation-container button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+} 
