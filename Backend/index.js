@@ -45,14 +45,14 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error("MongoDB connection error:", err));
 
 // Signup Route
-app.post('/signup', (req, res) => {
+app.post('/api/signup', (req, res) => {
   SignupModel.create(req.body)
     .then(user => res.json(user))
     .catch(err => res.status(500).json({ error: err.message }));
 });
 
 // Login Route
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
   console.log("Login attempt:", req.body);
 
@@ -74,7 +74,7 @@ app.post('/login', (req, res) => {
 });
 
 // Room Booking Route
-app.post('/bookroom', (req, res) => {
+app.post('/api/bookroom', (req, res) => {
   const { roomType, price, facilities, userEmail } = req.body;
 
   RoomModel.create({ roomType, price, facilities, userEmail })
@@ -86,7 +86,7 @@ app.post('/bookroom', (req, res) => {
 });
 
 // Flight Booking Route
-app.post('/book-flight', (req, res) => {
+app.post('/api/book-flight', (req, res) => {
   const { flightName, price, departure, arrival, date, userEmail } = req.body;
 
   FlightModel.create({ flightName, price, departure, arrival, date, userEmail })
