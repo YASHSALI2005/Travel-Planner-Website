@@ -14,7 +14,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post(`/api/login`, { email, password });
+      const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, { email, password });
       
       // updated success check
       if (result.data.message === "success") {

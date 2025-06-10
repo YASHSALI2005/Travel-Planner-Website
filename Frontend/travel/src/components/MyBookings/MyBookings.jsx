@@ -25,13 +25,13 @@ const MyBookings = () => {
     try {
       // Fetch room bookings
       console.log(`Fetching room bookings for user: ${userEmail}`); // Debugging
-      const roomResponse = await axios.get(`/api/my-room-bookings/${userEmail}`);
+      const roomResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/my-room-bookings/${userEmail}`);
       console.log('Room bookings response:', roomResponse.data); // Debugging
       setRoomBookings(roomResponse.data);
 
       // Fetch flight bookings
       console.log(`Fetching flight bookings for user: ${userEmail}`); // Debugging
-      const flightResponse = await axios.get(`/api/my-flight-bookings/${userEmail}`);
+      const flightResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/my-flight-bookings/${userEmail}`);
       console.log('Flight bookings response:', flightResponse.data); // Debugging
       setFlightBookings(flightResponse.data);
 
@@ -58,7 +58,7 @@ const MyBookings = () => {
       return;
     }
     try {
-      const endpoint = type === 'room' ? `/api/cancel-room-booking/${id}` : `/api/cancel-flight-booking/${id}`;
+      const endpoint = type === 'room' ? `${import.meta.env.VITE_BACKEND_URL}/api/cancel-room-booking/${id}` : `${import.meta.env.VITE_BACKEND_URL}/api/cancel-flight-booking/${id}`;
       await axios.delete(endpoint);
       alert(`${type.charAt(0).toUpperCase() + type.slice(1)} booking cancelled successfully!`);
       fetchBookings(); // Re-fetch bookings to update the list

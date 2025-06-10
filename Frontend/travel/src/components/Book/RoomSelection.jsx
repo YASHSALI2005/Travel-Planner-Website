@@ -81,7 +81,7 @@ const RoomSelection = () => {
     };
 
     try {
-      const response = await axios.post('/api/bookroom', bookingDetails); // Using Axios for the POST request
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/bookroom`, bookingDetails); // Using Axios for the POST request
 
       if (response.status === 200) {
         console.log('Booking successful:', response.data);
