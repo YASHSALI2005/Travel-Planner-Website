@@ -15,7 +15,7 @@ const FlightModel = require("./models/flights");
 app.use(express.json());
 
 app.use(cors({
-  origin: ['https://travelplanner-5t26.onrender.com', 'http://localhost:3000'],
+  origin: ['https://travel-planner-website-frontend.onrender.com', 'http://localhost:3000'],
   credentials: true
 }));
 
