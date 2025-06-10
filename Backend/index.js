@@ -95,7 +95,7 @@ app.post('/api/book-flight', (req, res) => {
 });
 
 // Get Room Bookings by User Email
-app.get('/my-room-bookings/:userEmail', (req, res) => {
+app.get('/api/my-room-bookings/:userEmail', (req, res) => {
   const { userEmail } = req.params;
   RoomModel.find({ userEmail })
     .then(bookings => res.json(bookings))
@@ -103,7 +103,7 @@ app.get('/my-room-bookings/:userEmail', (req, res) => {
 });
 
 // Get Flight Bookings by User Email
-app.get('/my-flight-bookings/:userEmail', (req, res) => {
+app.get('/api/my-flight-bookings/:userEmail', (req, res) => {
   const { userEmail } = req.params;
   FlightModel.find({ userEmail })
     .then(bookings => res.json(bookings))
@@ -111,7 +111,7 @@ app.get('/my-flight-bookings/:userEmail', (req, res) => {
 });
 
 // Cancel Room Booking
-app.delete('/cancel-room-booking/:id', (req, res) => {
+app.delete('/api/cancel-room-booking/:id', (req, res) => {
   const { id } = req.params;
   RoomModel.findByIdAndDelete(id)
     .then(result => {
@@ -124,7 +124,7 @@ app.delete('/cancel-room-booking/:id', (req, res) => {
 });
 
 // Cancel Flight Booking
-app.delete('/cancel-flight-booking/:id', (req, res) => {
+app.delete('/api/cancel-flight-booking/:id', (req, res) => {
   const { id } = req.params;
   FlightModel.findByIdAndDelete(id)
     .then(result => {
