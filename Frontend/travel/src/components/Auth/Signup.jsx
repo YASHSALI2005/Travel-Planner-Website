@@ -29,7 +29,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('/api/signup', {
+      const response = await axios.post('${import.meta.env.VITE_BACKEND_URL}/api/signup', {
         email,
         password,
         confirmPassword
