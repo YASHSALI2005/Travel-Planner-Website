@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: ["https://travel-planner-websitefrontend.vercel.app"],
-  methods: ["GET", "POST"],
+  methods: ["GET", "POST","DELETE"],
   credentials: true,
 }));
 
