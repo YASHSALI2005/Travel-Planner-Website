@@ -3,7 +3,11 @@
 An interactive web application for collaborative trip planning with group features, blog discussions, and shared to-do lists.
 
 ## 🌟 Live Demo
-*Coming soon! Stay tuned for updates.*
+View the full website live 👉 [Travel Planner Demo](https://travel-planner-websitefrontend.vercel.app/)
+
+## 🖼 Preview
+
+![Website Screenshot](https://raw.githubusercontent.com/YASHSALI2005/Travel-Planner-Website/main/Frontend/screenshot.png)
 
 ## 📝 Table of Contents
 - [About](#-about)
